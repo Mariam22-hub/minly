@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import { useGlobalContext } from '../context/globalContext';
 import ButtonComponent from './buttonComponent';
 import axios from "axios"
-import io from 'socket.io-client';
-
 
 axios.defaults.timeout = 120000;
 
@@ -12,6 +10,7 @@ function UploadComponent(props) {
     const {fetchMedia} = useGlobalContext()
 
     const [media, setMedia] = React.useState(null);
+    const [newMedia, setNewMedia] = React.useState(null)
     const [title, setTitle] = React.useState('');
     const [description, setDescription] = React.useState('');
     const [label, setLabel] = React.useState('Upload your media...');
@@ -39,9 +38,9 @@ function UploadComponent(props) {
 
         if(title){
             const formData = new FormData();
-            console.log(e.target.title.value)
-            console.log(e.target.description.value)
-            console.log(e.target.media.files[0])
+            // console.log(e.target.title.value)
+            // console.log(e.target.description.value)
+            // console.log(e.target.media.files[0])
 
             formData.append('title', e.target.title.value)
             formData.append('description', e.target.description.value)
@@ -53,7 +52,7 @@ function UploadComponent(props) {
                 });
 
                 if (response.status == 202) {
-                    alert("File is uploading...")
+                    alert("File has uploaded...")
                 }
 
                 fetchMedia();
@@ -78,7 +77,7 @@ function UploadComponent(props) {
             } 
         }
         else{
-            alert('Add Title')
+            alert('Please add a Title')
         }
         
         setLoading(false)

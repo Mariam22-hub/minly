@@ -6,9 +6,9 @@ function Media() {
     const { media, toggleLike, deleteMedia} = useGlobalContext();
     const [openMenuId, setOpenMenuId] = React.useState(null);
 
-    const toggleMenu = (id) => {
-        setOpenMenuId(openMenuId === id ? null : id);
-    };
+    // const toggleMenu = (id) => {
+    //     setOpenMenuId(openMenuId === id ? null : id);
+    // };
 
     return (
         <MediaStyled>
